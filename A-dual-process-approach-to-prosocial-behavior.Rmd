@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### Import library
 ```{r, results="hide", warning=FALSE, message=FALSE}
-packages <- c("dplyr", "tibble", "tidyr", "purrr", "FactoMineR", "ggplot2", "lm.beta", "olsrr", "rcompanion", "FSA", "caret", "tidyverse", "reticulate", "factoextra", "MASS", "ggeffects", "effects", "rio", "foreign", "Hmisc","reshape2", "misty", "lavaan")
+packages <- c("dplyr", "tibble", "tidyr", "purrr", "FactoMineR", "ggplot2", "lm.beta", "olsrr", "rcompanion", "FSA", "caret", "tidyverse", "reticulate", "factoextra", "MASS", "ggeffects", "effects", "rio", "foreign", "Hmisc","reshape2", "misty", "lavaan", "semPlot", "sjPlot")
 
 installed_packages <- packages %in% row.names(installed.packages())
 if (any(installed_packages == FALSE)) {
@@ -120,6 +120,8 @@ fviz_pca_var(pca, col.var="contrib",
 ### CFA COVID-19 scale 
 ```{r, warning=FALSE, message=FALSE}
 # cfa
+
+
 model<-'
 c1=~v2+v4+v9
 c2=~v3+v7+v8+v11
@@ -127,7 +129,12 @@ c3=~v10+v5'
 fit<- cfa(model, data=covid)
 summary(fit, fit.measures=T,standardized=T)
 ```
+```{r, warning=FALSE, message=FALSE, dev=c('png', 'tiff')}
+edge_labels = c("c1","c2","c3")
+node_labels = c("i1","i3","i7","i2","i5","i6","i9","i8","i4","c1","c2","c3")
 
+semPaths(fit,what = "paths", whatLabels = "std",nodeLabels = node_labels, edge.label.cex=1,edge.color="black", fade = F,sizeMan=8,sizeLat=8,esize=2,asize=2)
+```
 ### Merge COVID to main_task
 ```{r, warning=FALSE, message=FALSE}
 # dimensions 
@@ -315,6 +322,11 @@ ctable
 ci <- confint(m10)
 exp(cbind(OR = coef(m10), ci))
 ```
+### table dv_factor ~ Time pressure + Scnario + fase
+```{r}
+tab_model(m10)
+```
+
 ### Ordinal Logistic Regression (other variables) 254 participants
 ```{r, warning=FALSE, message=FALSE}
 m <- polr(dv_factor ~  AUC + covid_distant_spread + covid_impact_to_other + covid_spread + covid_impact + iri_TP + iri_PE + iri_DP + iri_F + age + gender + socioeconomic, data= main_task_2_na.rem, Hess=TRUE)
@@ -327,6 +339,11 @@ ctable
 exp(cbind("Odds ratio" = coef(m), confint.default(m, level = 0.95)))
 #exp(coef(m))
 
+```
+
+### table OLR (other variables)
+```{r}
+tab_model(m)
 ```
 
 
