@@ -2,8 +2,7 @@
 title: "A dual process approach to prosocial behaviour"
 author: "Nuno Fernandes"
 date: "23/11/2021"
-output:
-  rmarkdown::html_document
+output: github_document
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
