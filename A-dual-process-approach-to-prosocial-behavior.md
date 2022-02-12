@@ -347,10 +347,9 @@ summary(fit, fit.measures=T,standardized=T)
     ##     c3                0.134    0.039    3.483    0.000    1.000    1.000
 
 ``` r
-edge_labels = c("c1","c2","c3")
-node_labels = c("i1","i3","i7","i2","i5","i6","i9","i8","i4","c1","c2","c3")
+node_labels = c("Item 1","Item 3","Item 7","Item 2","Item 5"," Item 6"," Item 9"," Item 8","Item 4","Perceived \nspread","Perceived \nimpact","Perceived \ndistant \nspread")
 
-semPaths(fit,what = "paths", whatLabels = "std",nodeLabels = node_labels, edge.label.cex=1,edge.color="black", fade = F,sizeMan=8,sizeLat=8,esize=2,asize=2)
+semPaths(fit,what = "paths", whatLabels = "std",nodeLabels = node_labels, edge.label.cex=0.8, label.cex = 0.55, label.scale = F, edge.color="black", fade = F,sizeMan=8,sizeLat=8,esize=2,asize=2)
 ```
 
 ![](A-dual-process-approach-to-prosocial-behavior_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
@@ -1436,8 +1435,8 @@ fit.summary()
     ## Dep. Variable:                     dv   R-squared:                       0.111
     ## Model:                            OLS   Adj. R-squared:                  0.076
     ## Method:                 Least Squares   F-statistic:                     3.149
-    ## Date:                Fri, 11 Feb 2022   Prob (F-statistic):           0.000816
-    ## Time:                        17:19:46   Log-Likelihood:                -486.44
+    ## Date:                Sat, 12 Feb 2022   Prob (F-statistic):           0.000816
+    ## Time:                        17:59:25   Log-Likelihood:                -486.44
     ## No. Observations:                 262   AIC:                             994.9
     ## Df Residuals:                     251   BIC:                             1034.
     ## Df Model:                          10                                         
@@ -1481,8 +1480,8 @@ res_discovery.summary()
     ## Dep. Variable:                     dv   R-squared:                       0.107
     ## Model:                            OLS   Adj. R-squared:                  0.060
     ## Method:                 Least Squares   F-statistic:                     2.287
-    ## Date:                Fri, 11 Feb 2022   Prob (F-statistic):             0.0149
-    ## Time:                        17:19:46   Log-Likelihood:                -367.27
+    ## Date:                Sat, 12 Feb 2022   Prob (F-statistic):             0.0149
+    ## Time:                        17:59:25   Log-Likelihood:                -367.27
     ## No. Observations:                 202   AIC:                             756.5
     ## Df Residuals:                     191   BIC:                             792.9
     ## Df Model:                          10                                         
@@ -1552,7 +1551,7 @@ ax.errorbar(y=np.arange(len(res_validation.params[1:])) + 0.1, x=res_validation.
 ax.set_yticks(range(len(names)))
 ```
 
-    ## [<matplotlib.axis.YTick object at 0x00000000661F9E20>, <matplotlib.axis.YTick object at 0x00000000661F96A0>, <matplotlib.axis.YTick object at 0x00000000661E2550>, <matplotlib.axis.YTick object at 0x00000000662DD430>, <matplotlib.axis.YTick object at 0x00000000662DDBE0>, <matplotlib.axis.YTick object at 0x0000000066309A00>, <matplotlib.axis.YTick object at 0x0000000066310190>, <matplotlib.axis.YTick object at 0x00000000663108E0>, <matplotlib.axis.YTick object at 0x0000000066316130>, <matplotlib.axis.YTick object at 0x00000000663167C0>]
+    ## [<matplotlib.axis.YTick object at 0x0000000065E2AF70>, <matplotlib.axis.YTick object at 0x0000000065E2A7F0>, <matplotlib.axis.YTick object at 0x0000000065E146A0>, <matplotlib.axis.YTick object at 0x0000000065E6E3D0>, <matplotlib.axis.YTick object at 0x0000000065EE87F0>, <matplotlib.axis.YTick object at 0x0000000065EE8F40>, <matplotlib.axis.YTick object at 0x0000000065EF26D0>, <matplotlib.axis.YTick object at 0x0000000065EF2E20>, <matplotlib.axis.YTick object at 0x0000000065EF75B0>, <matplotlib.axis.YTick object at 0x0000000065EF2AC0>]
 
 ``` python
 ax.set_yticklabels(['\n'.join(textwrap.wrap(q, 60, break_long_words=False)) for q in names])

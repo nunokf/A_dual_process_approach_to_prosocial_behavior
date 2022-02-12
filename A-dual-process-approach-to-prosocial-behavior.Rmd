@@ -130,10 +130,10 @@ fit<- cfa(model, data=covid)
 summary(fit, fit.measures=T,standardized=T)
 ```
 ```{r, warning=FALSE, message=FALSE, dev=c('png', 'tiff')}
-edge_labels = c("c1","c2","c3")
-node_labels = c("i1","i3","i7","i2","i5","i6","i9","i8","i4","c1","c2","c3")
 
-semPaths(fit,what = "paths", whatLabels = "std",nodeLabels = node_labels, edge.label.cex=1,edge.color="black", fade = F,sizeMan=8,sizeLat=8,esize=2,asize=2)
+node_labels = c("Item 1","Item 3","Item 7","Item 2","Item 5"," Item 6"," Item 9"," Item 8","Item 4","Perceived \nspread","Perceived \nimpact","Perceived \ndistant \nspread")
+
+semPaths(fit,what = "paths", whatLabels = "std",nodeLabels = node_labels, edge.label.cex=0.8, label.cex = 0.55, label.scale = F, edge.color="black", fade = F,sizeMan=8,sizeLat=8,esize=2,asize=2)
 ```
 ### Merge COVID to main_task
 ```{r, warning=FALSE, message=FALSE}
